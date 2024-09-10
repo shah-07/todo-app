@@ -4,9 +4,8 @@ A simple Todo list app built with Laravel, allowing users to create, read, updat
 
 ## Features
 
-Create new Todo items.
-Filter Todo items by completion status.
-
+<p>Create new Todo items</p>
+<p>Filter Todo items by completion status</p>
 <p>Update individual Todo items</p>
 <p>Delete individual or all completed Todo items</p>
 
