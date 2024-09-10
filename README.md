@@ -28,4 +28,5 @@ A simple Todo list app built with Laravel, allowing users to create, read, updat
 
 ## Acknowledgments
 
-<p>Laravel framework for building the app</p>
+<p><strong>Laravel framework:</strong> for building the app</p>
+<p><strong>Axios:</strong> for handling HTTP requests and enabling seamless communication with APIs</p>
