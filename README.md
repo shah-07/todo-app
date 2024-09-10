@@ -13,7 +13,7 @@ A simple Todo list app built with Laravel, allowing users to create, read, updat
 
 ### Installation
 
-<p>Clone the repository: git clone https://github.com/your-username/todo-manager.git</p>
+<p>Clone the repository: git clone https://github.com/shah-07/todo-app.git</p>
 <p>Install dependencies: composer install</p>
 <p>Run migrations: php artisan migrate</p>
 <p>Start the server: php artisan serve</p>
