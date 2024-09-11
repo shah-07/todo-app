@@ -1,5 +1,4 @@
 //------------------------------ON LOAD--------------------------------------------------------
-
 //------------------------------eventListeners----------------------------------------
 document
     .querySelector(".input-div input")
@@ -79,11 +78,13 @@ async function enterInput(event) {
 
         try {
             //create new todo item on server
+            showLoader();
             let response = await axios.post("/todos", newItem);
 
             if (response.status === 201) {
                 updateList();
                 event.target.value = ""; //reset the input
+                hideLoader();
             }
         } catch (error) {
             console.error("Error creating new todo item:", error);
@@ -105,11 +106,13 @@ async function addButtonClick() {
         var element = { text: input.value, completed: false };
 
         try {
+            showLoader();
             let response = await axios.post("/todos", element);
 
             if (response.status === 201) {
                 updateList();
                 input.value = "";
+                hideLoader();
             }
         } catch (error) {
             console.error("Error creating new todo item:", error);
@@ -214,7 +217,9 @@ async function updateTodoItemsOnServer() {
         });
 
         // Send a PATCH request to the server to update the todo items
+        showLoader();
         await axios.patch("/todos/update", array);
+        hideLoader();
     } catch (error) {
         console.error("Error updating todo items:", error);
     }
@@ -266,12 +271,14 @@ async function deleteElement(e) {
     let todoId = e.target.getAttribute("data-id"); // Assuming the ID is stored in a "data-id" attribute
     try {
         // Send a DELETE request to the server to delete the todo item
+        showLoader();
         let response = await axios.delete(`/todos/${todoId}`);
 
         // Check if the response was successful
         if (response.status === 200) {
             // Update the list
             updateList();
+            hideLoader();
         } else {
             console.error("Error deleting todo item:", response);
         }
@@ -285,6 +292,7 @@ async function updateList() {
     try {
         //get list with items from Axios call
         let response = await axios.get("/todos");
+
         let array = response.data;
 
         document.querySelector(".list").innerHTML = "";
@@ -305,6 +313,7 @@ async function updateList() {
 async function clearCompleted() {
     try {
         // Send a DELETE request to the server to delete completed todo items
+        showLoader();
         let response = await axios.delete("/todos/completed");
 
         // Check if the response was successful
@@ -314,6 +323,7 @@ async function clearCompleted() {
             updateList();
             filtersRefreshList();
             countItemsLeft();
+            hideLoader();
         } else {
             console.error("Error deleting completed todo items:", response);
         }
@@ -401,4 +411,12 @@ function updateTheme() {
 
         themeIcon.src = "images/icon-sun.svg";
     }
+}
+
+//Showing loading when axios call happens
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+function hideLoader() {
+    document.getElementById("loader").style.display = "none";
 }

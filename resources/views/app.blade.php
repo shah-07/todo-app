@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,12 @@
 <body>
     <header></header>
     <main>
+        <div style="display: none" id="loader" class="LoadingOverlay">
+            <div class="Line-Progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+
         <div id="container">
             <div class="header-title-div">
                 <h2 class="header-title">TODO</h2>
@@ -66,7 +72,7 @@
     </main>
 
     <!--import Axios-->
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="{{ asset('js/axios.min.js') }}"></script>
 
     <!--import JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -76,7 +82,7 @@
         integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 
     <!--import main script-->
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 
     <!--Script for making the list sortable-->
     <script>
